@@ -60,19 +60,25 @@ CI/CD Automation (NL)
 
 |=========================
 
+*Warning:* This schedule applies to an _average_ group. It also leaves
+time for the instructor to add examples, demos and answer questions. For
+many reasons you could be faster or slower than what is described in
+this schedule.
+
 If you encounter any errors in this document or if you have any
 suggestions/comments please contact us at eduction@pivotal.io.
 
 [[overview]]
 ## Overview
 
-*Warning:* This schedule applies to an _average_ group. It also leaves
-time for the instructor to add examples, demos and answer questions. For
-many reasons you could be faster or slower than what is described in
-this schedule.
+About the course ...
 
-_In link:#topic-details[the next chapter] we discuss the course in
-more detail, including the optional material_.
+* The course is only available online. There are no PDF documents or installers for the
+students - they use the same web-site we do.
+
+* Slides use _reveal.js_ and can be viewed in a standard Web Browser. to move between
+slides use the left/right arrow keys or the page up/down keys. Clicking the mouse does
+not do anything.
 
 * The course is not developed by Pivotal and we have limited control over its content.
 In particular the _reveal.js_ slides are minimal in the extreme.  Fundamentally this is
@@ -85,7 +91,7 @@ slide) but does not appear in the actual slides.
 reference. If you have two screens, show the slides on the projector and the popup
 on your own screen.  As you move from slide to slide, they stay in sync.
 
-This document augments the main materials for instructors. Additional PowerPoint
+This document augments the online materials for instructors. Additional PowerPoint
 slides (from our original PCF Developer course) are also provided as extra source
 material.
 
@@ -117,7 +123,7 @@ can talk them through it on the first day.
    goto loop
 ```
 * A Cloud Foundry account is required.  Either students use their own CF setup or
-  PWS can be used (but some of the labs like the Docker lab can't be run of PWS).
+  PWS can be used (but a couple of the labs, like the Docker lab, can't be run on PWS).
 * Logging in and targeting an organization and space is not covered in the introduction
   - So you must take students through this.  The original slides from the PCF Developer
   course that went through this are in `slides/02-getting-started-cli.ppt`,
