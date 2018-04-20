@@ -2,6 +2,11 @@
 
 ## Overview
 
+Course is available online at: https://cf-developer.pal.pivotal.io
+
+Credentials to access are: username _pivotal_, password _keepitsimple_
+
+
 Here is the basic schedule. (_NL = no lab, OL = optional lab, OPT =
 optional section_, XP = lab does _not_ run on PWS).
 
@@ -69,18 +74,16 @@ this schedule.
 _In link:#topic-details[the next chapter] we discuss the course in
 more detail, including the optional material_.
 
-* The course is available here: https://cf-developer.pal.pivotal.io -
-username: _pivotal_, password: _keepitsimple_
-
 * The course is not developed by Pivotal and we have limited control over its content.
 In particular the _reveal.js_ slides are minimal in the extreme.  Fundamentally this is
-an e-Learning course not intended for Instructor Led Training. A lot of very useful
-information is in the slides popup (press 'e' in any slide) but does not appear in
-the actual slides.
+an e-Learning course not intended for Instructor Led Training.
 
-* When you are presenting the summary popup (press 's' in any slide) is useful.
-If you have two screens, show the slides on the projector and the popup on your
-own screen.  As you move from slide to slide, they stay in sync.
+* A lot of very useful information is in the "E-Learning" popup (press 'e' in any
+slide) but does not appear in the actual slides.
+
+* When you are presenting, the Summary popup (press 's' in any slide) is useful for
+reference. If you have two screens, show the slides on the projector and the popup
+on your own screen.  As you move from slide to slide, they stay in sync.
 
 This document augments the main materials for instructors. Additional PowerPoint
 slides (from our original PCF Developer course) are also provided as extra source
@@ -97,7 +100,7 @@ they need are pre-written for them.  This is really "CF _for_ Developers" not
 Students will need to have the following installed before the course, although you
 can talk them through it on the first day.
 
-* The Cloud Foundry `cf` command-line interface.
+* The Cloud Foundry `cf` command-line interface: https://github.com/cloudfoundry/cli#downloads
 * The `curl` utility.  Curl for Windows is here: https://curl.haxx.se/download.html.
   Many Windows users find the Postman application easier: https://www.getpostman.com
   (it is available for Windows, MacOS or Linux)
@@ -204,13 +207,14 @@ useful here.  Alternatively the logging slides from the old course are in
 
 | *Resilience* | _2:45-3:15_ |
 Short section on the "4 levels of HA".  Again go to the whiteboard to explain more
-or use `slides/05-high-availability.ppt` |
-| YES (kill an app) _3:15-3:30_ |
+or use `slides/05-high-availability.ppt`
+| YES (kill an app) _3:15-3:30_ 
 
 | *Services* | _3:15-3:45_ |
 Minimal overview of Services and how they work.  Feel free to use the 
 services slides: `slides/06-services.ppt`.
-| YES (services) 3:45-4:15 |
+| YES (services) 3:45-4:15
+
 |=======================================================================
 
 If you have been using the extra slides you will probably not finish early.
@@ -233,8 +237,9 @@ important ones,  For more details see `slides/07-twelve-factor.ppt`.
 
 VI. Execute the app as one or more stateless processes - _note however that using
     persistent sessions is easier than rewriting your application to be stateless.
-    For Java applications \, Spring Session makes this easy using a Filter to save
-    sessions to Redis, Gemfire, MongoDB or an RDBMS_.
+    For Java applications, Spring Session makes this easy using a Filter to save
+    sessions to Redis, Gemfire, MongoDB or an RDBMS (Java buildpack can set this up
+    automatically)_.
     
 VII. Export services via port binding - _actually not necessarily so, the Java buildpack,
      for example, supports both JAR and WAR applications_.
@@ -245,7 +250,7 @@ IX. Maximize robustness with fast startup and graceful shutdown - _containers ar
 
 XI. Treat logs as event streams - _can no longer write to log files_.
 
-The lab uses environment variables an manifest. Neither of which are explained in the
+The lab uses environment variables and a manifest. Neither of which are explained in the
 slides.  Use `slides/08-manifests-env-vars.ppt` if you wish.
 | YES 9:30-10:00 (env vars & manifest)
 
@@ -258,14 +263,16 @@ the subject of the lab.  `slides/09-log-drain.ppt` are available.
 
 | *Manipulating Routes* | _11:00-11:30_ |
 Overview of routes and blue-green deployment.  Use `slides/10-blue-green.ppt` if you
-prefer. There are two labs -manual blue-green deployment, then using the `cf` CLI
+prefer. There are two labs - manual blue-green deployment, then using the `cf` CLI
 blue-green plugin.
 | 2 LAB (blue-green, CLI plugin) _11:00-11:30_
 
 | *App Security Groups* | _11:30-12:00_ |
 Controlling outbound ("_egress_") access _from_ your application to the outside world -
 in addition to any firewalls you may have.  Alternative slides are
-`slides/11-app-security-grps.ppt`.  Lab involves monitoring with New Relic which is
+`slides/11-app-security-grps.ppt`.
+
+Lab involves monitoring with New Relic which is
 not covered by the slides.  Use `slides/12-app-perf-mgmt.ppt`.
 | LAB (monitoring) _12:00-012:30_
 
@@ -273,24 +280,27 @@ not covered by the slides.  Use `slides/12-app-perf-mgmt.ppt`.
 
 | *Staging & Running* | _1:30-2:15_ |
 Buildpacks.  The original buildpack slides are in `slides/13-buildpacks.ppt`.
-Lab deploys a Ruby application that uses CUPS to access the Roster application as
+
+Lab deploys a Ruby application (Web-UI) that uses CUPS to access the Roster application as
 a service - similar to the old Articulate and Attendee applications.  Lab also
 asks students to push the Web-UI again, this time using the static buildpack instead.
-| YES _2:15-2:45_
+| YES (use ruby & static buidpacks) _2:15-2:45_
 
 
 | *BREAK* | _2:45-3:15_ | |
 
 | *Microservices* | _3:30-4:15_ |
-The original microservices slides are in `slides/14-microservices.ppt`. The lab
-uses `cf ssh` which is not covered by any slides.
-| YES _3:15-3:30 _
+The original microservices slides are in `slides/14-microservices.ppt`.
+
+The lab uses `cf ssh` which is not covered by any slides.
+| YES (cf ssh) _3:15-3:30 _
 
 | *Route Services* | _3:15-3:35_ |
 Slides are actually reasonable, but click 'e' to show the details of what each
-slide is trying to show - especially for the 2 diagrams.  Lab deploys a rate-limiting
-route service (same as PCF Developer course).
-| YES _3:35-4:00_
+slide is trying to show - especially for the 2 diagrams.
+
+Lab deploys a rate-limiting route service (same as PCF Developer course).
+| YES (rate limiting) _3:35-4:00_
 
 | *Docker* | _4:00-4:30_ |
 Using Docker in PAS - this is not PKS.
@@ -326,7 +336,7 @@ contains two links - one to the UAA app and one to its manifest - not obvious.
 
 Lab first deploys the UAA application and then sets up a route service to use it.
 A great example, but challenging.
-| 2 Labs _10:00-11:30_ (incl break)
+| 2 Labs (using UAA) _10:00-11:30_ (incl break)
 
 | *BREAK* | _10:30-11:00_ | |
 
@@ -339,13 +349,13 @@ Augment with any additional material you may have.
 Discusses high availability in a microservices environment and a brief overview of
 the circuit breaker pattern.  The Web-UI application has circuit-breaker functionality
 built-in and is used in the lab.
-| YES – _11:40-12:00_
+| YES (circuit breaker demo) _11:40-12:00_
 
 | *Distributed Tracing* |_12:00-12:30_ |
 Minimal overview.
 | NONE
 
-| *LUNCH* | _12:30-1:30_ | If you are running early, you can afford an hour for lunch. | 
+| *LUNCH* | _12:30-1:30_ | | 
 
 | *App Lifecycle* | _1:30-2:00_ |
 Deploying applications to multiple spaces to reflect the application lifecycle - dev
@@ -355,7 +365,7 @@ separate foundation for obvious security reasons.
 
 Lab shows using multiple domains so an extra domain must have been setup in advance.
 Lab will not work on PWS.
-| YES (XP) _2:00-2:30_
+| YES (XP - multiple domains) _2:00-2:30_
 
 | *BREAK* | _2:30-3:00_ | |
 
