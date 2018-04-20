@@ -1,0 +1,378 @@
+# Cloud Foundry Developer - Instructor's Guide
+
+## Overview
+
+Here is the basic schedule. (_NL = no lab, OL = optional lab, OPT =
+optional section_, XP = lab does _not_ run on PWS).
+
+[cols=",,",]
+|=========================
+|*Day 1* |*Day 2* |*Day 3*
+a|
+Course Orientation (NL)
+
+CF Motivations (NL)
+
+Basic Definitions (NL)
+
+Tech Overview
+
+Core Themes
+
+Logging & Metrics
+
+Resiliency
+
+Services |
+12 Factor Applications
+
+Log Drain Review
+
+App Execution & Security Groups
+
+Staging & Running
+
+Microservices
+
+Route Services
+
+Docker (XP) |
+TCP Routing (NL)
+
+UAA & OAuth2
+
+Cloud Native (NL)
+
+Cascading Failure
+
+Distributed Tracing (NL)
+
+App Lifecycle (XP)
+
+Non-Breaking Changes (NL)
+
+CI/CD Automation (NL)
+
+|=========================
+
+If you encounter any errors in this document or if you have any
+suggestions/comments please contact us at eduction@pivotal.io.
+
+[[overview]]
+## Overview
+
+*Warning:* This schedule applies to an _average_ group. It also leaves
+time for the instructor to add examples, demos and answer questions. For
+many reasons you could be faster or slower than what is described in
+this schedule.
+
+_In link:#topic-details[the next chapter] we discuss the course in
+more detail, including the optional material_.
+
+* The course is available here: https://cf-developer.pal.pivotal.io -
+username: _pivotal_, password: _keepitsimple_
+
+* The course is not developed by Pivotal and we have limited control over its content.
+In particular the _reveal.js_ slides are minimal in the extreme.  Fundamentally this is
+an e-Learning course not intended for Instructor Led Training. A lot of very useful
+information is in the slides popup (press 'e' in any slide) but does not appear in
+the actual slides.
+
+* When you are presenting the summary popup (press 's' in any slide) is useful.
+If you have two screens, show the slides on the projector and the popup on your
+own screen.  As you move from slide to slide, they stay in sync.
+
+This document augments the main materials for instructors. Additional PowerPoint
+slides (from our original PCF Developer course) are also provided as extra source
+material.
+
+
+[[setup]]
+## Prerequisites and Setup
+
+Students are not required to develop in any particular language.  The applications
+they need are pre-written for them.  This is really "CF _for_ Developers" not
+"Developing with CF".  Make sure students are clear on this.
+
+Students will need to have the following installed before the course, although you
+can talk them through it on the first day.
+
+* The Cloud Foundry `cf` command-line interface.
+* The `curl` utility.  Curl for Windows is here: https://curl.haxx.se/download.html.
+  Many Windows users find the Postman application easier: https://www.getpostman.com
+  (it is available for Windows, MacOS or Linux)
+* There is no `watch` utility on Windows.  However it can be simualted using a script.
+   Save the following as `watch.bat`. Run using `watch <some-command>` and it will
+   run that command every second:
++
+```
+   @ECHO OFF
+   :loop
+     cls
+     %*
+     timeout /t 1 > NUL
+   goto loop
+```
+* A Cloud Foundry account is required.  Either students use their own CF setup or
+  PWS can be used (but some of the labs like the Docker lab can't be run of PWS).
+* Logging in and targeting an organization and space is not covered in the introduction
+  - So you must take students through this.  The original slides from the PCF Developer
+  course that went through this are in `slides/02-getting-started-cli.ppt`,
+  if you wish to use them.
+
+[[the-course]]
+## The Course
+
+The slides for this course are minimal.  Feel free to add your own slides as appropriate
+to bring out important points.  Slides from the former PCF Developer are perfectly
+reusable when presenting this course and are provided for you convenience in the
+`slides` directory. They have been updated for PCF V2.
+
+Most of the labs are shorter than our traditional courses.  However several ask
+students questions at the end.  Go over these questions with the students at the
+end of the lab.
+
+Day 3 has fewer labs so you can afford to run behind and make it up in the last day.
+
+[[cfd-day-1]]
+### DAY 1: Basic Usage
+
+Basic setup and usage of Cloud Foundry.
+
+Get the class to introduce themselves, supply some background, what language do
+they develop in, have they used CF (or anything similar before) and what are they
+expecting to get from the course.
+
+*Suggestion:* As they introduce themselves, write all the names down on
+a sheet of paper in the same arrangement as the desks. If teaching
+overseas, get one of the students to write names on the whiteboard for
+you (again in desk order) so that you don’t end up stumbling over and
+misspelling unfamiliar names. Write the names down afterwards, in case
+some helpful person cleans the whiteboard overnight!
+
+[cols="3,^2,9,^2",options="header"]
+|=======================================================================
+|  *Slides*  |  *Approx Times*  |  *Notes*  |  *Lab*
+
+| *Course Orientation* | _9:00-9:30_ |
+Sets the scene and the philosophy behind the content.  Feel free to skim or even
+skip this content.  It is just an introduction.
+
+Before or after these slides introduce yourself, then go around the room to let
+the students introduce themselves.
+| NONE
+
+| *CF Motivations* | _9:30-10:00_ |
+Overall background to Cloud Foundry and why you need it.  More marketing than
+technical, skim or augment with your own knowledge and arguments.  The Tech Overview
+has more "meat".
+| NO
+
+| *Basic Definitions* | _10:00-10:30_ |
+Short section defining CF specific concepts like organizations, spaces and services.
+The original concepts slides are provided if you prefer: ``slides/01-concepts.ppt``.
+| NO
+
+| *BREAK* | _10:30-11:00_ | |
+
+| *Tech Overview* | _11:00-11:45_ |
+Basic technical overview of Cloud Foundry.  In addition take students through logging
+in and selecting a space.  Use these slides from the old PCF Developer course
+`slides/02-getting-started-cli.ppt` if you wish.
+| YES (push an app) _11:45-12:30_
+
+| *LUNCH* | _12:30-1:30_ | | 
+
+| *Architecture* | 45-60 minutes |
+The new course does not really go into the architecture of the
+PAS, but most students are keen to know what is going on "inside the box". Depending
+on the group, and time available, you may wish to go through `slides/03-architecure.ppt`.
+| NO
+
+| *Core Themes* | _1:30-1:45_ |
+Minimal slide deck that you can skip through quickly.
+| YES (scaling) _1:45-2:05_
+
+| *Logging & Metrics* | _2:05-2:30_ |
+Minimal slide deck providing a brief overview of logging and the Loggregator
+subsystem.  A whiteboard discussion of how the Loggregator works would be
+useful here.  Alternatively the logging slides from the old course are in
+`slides/03-logging.ppt`.
+| YES (logging) _2:45-3:00_ (after break)
+
+| *BREAK* | _2:30-2:45_ | |
+
+| *Resilience* | _2:45-3:15_ |
+Short section on the "4 levels of HA".  Again go to the whiteboard to explain more
+or use `slides/05-high-availability.ppt` |
+| YES (kill an app) _3:15-3:30_ |
+
+| *Services* | _3:15-3:45_ |
+Minimal overview of Services and how they work.  Feel free to use the 
+services slides: `slides/06-services.ppt`.
+| YES (services) 3:45-4:15 |
+|=======================================================================
+
+If you have been using the extra slides you will probably not finish early.
+The next two days are short, so it is OK to run over today.
+
+
+[[section]]
+
+[[cfd-day-2]]
+### Day 2: Cloud Native Applications
+
+[cols="3,^2,9,^2",options="header"]
+|=======================================================================
+|  Slides  |  Approx Times  |  Notes |  Lab
+
+| *12 Factor Apps* | _9:00-9:30_ |
+As the slides say these are recommendations - _not_ a 'religion'.  Many are developer
+common sense, a few are due to writing for a cloud environment. The summary lists the
+important ones,  For more details see `slides/07-twelve-factor.ppt`.
+
+VI. Execute the app as one or more stateless processes - _note however that using
+    persistent sessions is easier than rewriting your application to be stateless.
+    For Java applications \, Spring Session makes this easy using a Filter to save
+    sessions to Redis, Gemfire, MongoDB or an RDBMS_.
+    
+VII. Export services via port binding - _actually not necessarily so, the Java buildpack,
+     for example, supports both JAR and WAR applications_.
+     
+IX. Maximize robustness with fast startup and graceful shutdown - _containers are
+    disposable and could be shitdown at any time. Even if they don't fail, they could
+    get scaled down instead_.
+
+XI. Treat logs as event streams - _can no longer write to log files_.
+
+The lab uses environment variables an manifest. Neither of which are explained in the
+slides.  Use `slides/08-manifests-env-vars.ppt` if you wish.
+| YES 9:30-10:00 (env vars & manifest)
+
+| *Log Drain Review* |_9:30-10:00_ |
+Slides belatedly describe the Loggregator architecture but do not describe log draining,
+the subject of the lab.  `slides/09-log-drain.ppt` are available.
+| YES (log draining) 10:00-10:30
+
+| *BREAK* | _10:30-11:00_ | |
+
+| *Manipulating Routes* | _11:00-11:30_ |
+Overview of routes and blue-green deployment.  Use `slides/10-blue-green.ppt` if you
+prefer. There are two labs -manual blue-green deployment, then using the `cf` CLI
+blue-green plugin.
+| 2 LAB (blue-green, CLI plugin) _11:00-11:30_
+
+| *App Security Groups* | _11:30-12:00_ |
+Controlling outbound ("_egress_") access _from_ your application to the outside world -
+in addition to any firewalls you may have.  Alternative slides are
+`slides/11-app-security-grps.ppt`.  Lab involves monitoring with New Relic which is
+not covered by the slides.  Use `slides/12-app-perf-mgmt.ppt`.
+| LAB (monitoring) _12:00-012:30_
+
+| *LUNCH* | _12:30-1:30_ | |
+
+| *Staging & Running* | _1:30-2:15_ |
+Buildpacks.  The original buildpack slides are in `slides/13-buildpacks.ppt`.
+Lab deploys a Ruby application that uses CUPS to access the Roster application as
+a service - similar to the old Articulate and Attendee applications.  Lab also
+asks students to push the Web-UI again, this time using the static buildpack instead.
+| YES _2:15-2:45_
+
+
+| *BREAK* | _2:45-3:15_ | |
+
+| *Microservices* | _3:30-4:15_ |
+The original microservices slides are in `slides/14-microservices.ppt`. The lab
+uses `cf ssh` which is not covered by any slides.
+| YES _3:15-3:30 _
+
+| *Route Services* | _3:15-3:35_ |
+Slides are actually reasonable, but click 'e' to show the details of what each
+slide is trying to show - especially for the 2 diagrams.  Lab deploys a rate-limiting
+route service (same as PCF Developer course).
+| YES _3:35-4:00_
+
+| *Docker* | _4:00-4:30_ |
+Using Docker in PAS - this is not PKS.
+| 2 Labs (XP - deploy and use Docker app) _4:30-5:00_
+
+|=======================================================================
+
+
+[[day-3]]
+### Day 3: Advanced Features
+
+This day covers many interesting topics that we never had time to include in
+the PCF Developer course but the slides will not help you much.  Consider
+presenting from the slides popup (hit 's' in any slide) due to the extra depth
+of information.
+
+[cols="3,^2,9,^2",options="header"]
+|=======================================================================
+|  Slides  |  Approx Times  |  Notes |  Lab
+
+| *TCP Routing* | _9:00-9:30_ |
+Supporting protocols other than HTTP. Most commonly used to send HTTPS directly
+to your application or by IoT devices using various protocols.
+| No
+
+| *UAA & OAuth2* | _9:30-10:00_ |
+A good grasp of OAuth2 is required here and the slides don't really go into depth.
+If you have OAuth2 slides, use them. 
+
+The lab notes state: _A compiled version of the
+UAA, and a corresponding deployment manifest have been made available_.  This sentence
+contains two links - one to the UAA app and one to its manifest - not obvious.
+
+Lab first deploys the UAA application and then sets up a route service to use it.
+A great example, but challenging.
+| 2 Labs _10:00-11:30_ (incl break)
+
+| *BREAK* | _10:30-11:00_ | |
+
+| *Cloud Native* | 11:00-11:20|
+Very high-level.  Lots of motherhood statements but not much practical guidance.
+Augment with any additional material you may have.
+| NONE
+
+| *Cascading Failures* | _11:20-11:40_ |
+Discusses high availability in a microservices environment and a brief overview of
+the circuit breaker pattern.  The Web-UI application has circuit-breaker functionality
+built-in and is used in the lab.
+| YES – _11:40-12:00_
+
+| *Distributed Tracing* |_12:00-12:30_ |
+Minimal overview.
+| NONE
+
+| *LUNCH* | _12:30-1:30_ | If you are running early, you can afford an hour for lunch. | 
+
+| *App Lifecycle* | _1:30-2:00_ |
+Deploying applications to multiple spaces to reflect the application lifecycle - dev
+to testing to QA to UAT ... to production.  The slides show all this happening in a
+single CF Foundation (installation).  In practice we recommend making production a
+separate foundation for obvious security reasons.
+
+Lab shows using multiple domains so an extra domain must have been setup in advance.
+Lab will not work on PWS.
+| YES (XP) _2:00-2:30_
+
+| *BREAK* | _2:30-3:00_ | |
+
+| *Non-Breaking Contracts* | _3:00-3:30_ |
+Microservices rely on the interface between different processes remaining constant -
+the protocol and data-representation must stay the same.  Doing this is hard and this
+section offers some guidance.
+| NO
+
+| *CI/CD Automation* | _3:30-4:00_ |
+Building automated deployment pipelines.  Important topic but few slides.
+| NO
+
+| *Completed* | _4:00-4:30_|
+The online course has no end of course slides - so use `slides/15-completed.ppt`.
+The course is preparation for the CF Foundation's certification process.
+Don't forget your evaluation.
+| NO |
+
+|=======================================================================
