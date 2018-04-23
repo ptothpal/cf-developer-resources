@@ -85,7 +85,7 @@ In particular the _reveal.js_ slides are minimal in the extreme.  Fundamentally 
 an e-Learning course not intended for Instructor Led Training.
 
 * A lot of very useful information is in the "E-Learning" popup (press 'e' in any
-slide) but does not appear in the actual slides.
+slide) that does not appear in the actual slides.
 
 * When you are presenting, the Summary popup (press 's' in any slide) is useful for
 reference. If you have two screens, show the slides on the projector and the popup
@@ -109,7 +109,7 @@ can talk them through it on the first day.
 * The Cloud Foundry `cf` command-line interface: https://github.com/cloudfoundry/cli#downloads
 * The `curl` utility.  Curl for Windows is here: https://curl.haxx.se/download.html.
   Many Windows users find the Postman application easier: https://www.getpostman.com
-  (it is available for Windows, MacOS or Linux)
+  (it is available for Windows, MacOS or Linux).
 * There is no `watch` utility on Windows.  However it can be simualted using a script.
    Save the following as `watch.bat`. Run using `watch <some-command>` and it will
    run that command every second:
@@ -165,7 +165,8 @@ some helpful person cleans the whiteboard overnight!
 
 | *Course Orientation* | _9:00-9:30_ |
 Sets the scene and the philosophy behind the content.  Feel free to skim or even
-skip this content.  It is just an introduction.
+skip this content.  It is just an introduction.  An alternative introductory deck
+is `slides/00-introduction`.
 
 Before or after these slides introduce yourself, then go around the room to let
 the students introduce themselves.
@@ -174,12 +175,13 @@ the students introduce themselves.
 | *CF Motivations* | _9:30-10:00_ |
 Overall background to Cloud Foundry and why you need it.  More marketing than
 technical, skim or augment with your own knowledge and arguments.  The Tech Overview
-has more "meat".
+has more "meat".  The original overview from the PCF Developer course has been updated
+for PCF V2: `slides/00-overview`.
 | NO
 
 | *Basic Definitions* | _10:00-10:30_ |
 Short section defining CF specific concepts like organizations, spaces and services.
-The original concepts slides are provided if you prefer: ``slides/01-concepts.ppt``.
+The original concepts slides are provided if you prefer: `slides/01-concepts.ppt`.
 | NO
 
 | *BREAK* | _10:30-11:00_ | |
@@ -192,7 +194,7 @@ in and selecting a space.  Use these slides from the old PCF Developer course
 
 | *LUNCH* | _12:30-1:30_ | | 
 
-| *Architecture* | 45-60 minutes |
+| *Architecture*  (EXTRA) | 45-60 minutes |
 The new course does not really go into the architecture of the
 PAS, but most students are keen to know what is going on "inside the box". Depending
 on the group, and time available, you may wish to go through `slides/03-architecure.ppt`.
@@ -309,7 +311,9 @@ Lab deploys a rate-limiting route service (same as PCF Developer course).
 | YES (rate limiting) _3:35-4:00_
 
 | *Docker* | _4:00-4:30_ |
-Using Docker in PAS - this is not PKS.
+Using Docker in PAS - this is _not_ about PKS.
+
+Lab cannot be done if using PWS.
 | 2 Labs (XP - deploy and use Docker app) _4:30-5:00_
 
 |=======================================================================
@@ -330,6 +334,7 @@ of information.
 | *TCP Routing* | _9:00-9:30_ |
 Supporting protocols other than HTTP. Most commonly used to send HTTPS directly
 to your application or by IoT devices using various protocols.
+Additional `slides/15-routing.ppt`.
 | No
 
 | *UAA & OAuth2* | _9:30-10:00_ |
@@ -386,7 +391,7 @@ Building automated deployment pipelines.  Important topic but few slides.
 | NO
 
 | *Completed* | _4:00-4:30_|
-The online course has no end of course slides - so use `slides/15-completed.ppt`.
+The online course has no end of course slides - so use `slides/50-completed.ppt`.
 The course is preparation for the CF Foundation's certification process.
 Don't forget your evaluation.
 | NO |
