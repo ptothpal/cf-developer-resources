@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!-- * * * * * * AUTO-GENERATED: DO NOT MODIFY THIS FILE  * * * * * * -->
+
+<!-- Used to pull multiple XML files into a single file for processing -->
+
+<!DOCTYPE book PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'
+     'http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd'
+[
+<!ENTITY lab_concepts-no-lab                                              SYSTEM "concepts-no-lab.xml">
+
+<!ENTITY lab_course_title                                                        "Core Spring">
+<!ENTITY lab_course_version                                                      "2.0.a.RELEASE">
+<!ENTITY lab_copyright_text                                                      "© Copyright 2018 Pivotal Software, Inc. All rights reserved">
+]>
+
+<book>
+    <bookinfo>
+        <title>Core Spring - Lab Instructions</title>
+    </bookinfo>
+    <toc />
+
+    <!-- Section: intro -->
+
+    <!-- Section: main -->
+    &lab_concepts-no-lab;
+
+</book>
