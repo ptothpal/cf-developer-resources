@@ -61,9 +61,8 @@ CI/CD Automation (NL)
 |=========================
 
 *Warning:* This schedule applies to an _average_ group. It also leaves
-time for the instructor to add examples, demos and answer questions. For
-many reasons you could be faster or slower than what is described in
-this schedule.
+time for the instructor to add examples, demos and answer questions.
+You may be faster or slower than what is described in this schedule.
 
 If you encounter any errors in this document or if you have any
 suggestions/comments please contact us at eduction@pivotal.io.
